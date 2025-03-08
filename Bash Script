@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Define the network range (e.g., 192.168.1.0/24)
+NETWORK="192.168.1"
+
+# Loop through IP addresses in the range
+for i in {1..254}; do
+    IP="$NETWORK.$i"
+    # Ping the IP address with 1 packet and a timeout of 1 second
+    ping -c 1 -W 1 $IP > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo "Host $IP is up"
+    fi
+# this tool wil help you in scanning and sweeiping Ip adresses nearby with the help of NMAP tho you can perform it better 
